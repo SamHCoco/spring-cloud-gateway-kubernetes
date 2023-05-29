@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  namespace: spring-k8
+spec:
+  rules:
+     - host: cloud-gateway.com
+       http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: cloud-gateway-service
+                port:
+                  number: 8081
